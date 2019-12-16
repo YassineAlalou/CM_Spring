@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/User")
 public class UserController {
@@ -22,7 +23,7 @@ public class UserController {
 
     @PostMapping("/register")
     public User register(@RequestBody UserForm user){
-        return userService.saveUser(user.getNom(),user.getPrenom(),user.getDateNaiss(),user.getLogin(),user.getPassword(),user.getRepassword());
+        return userService.saveUser(user.getNom(),user.getPrenom(),user.getAge(),user.getTel(),user.getUsername(),user.getPassword(),user.getRepassword());
     }
     @GetMapping("/all")
     public List<User> getAll(){
@@ -47,7 +48,7 @@ public class UserController {
 
     @PostMapping("/registeruser/{id}")
     public User registerUser(@RequestBody UserForm user, @PathVariable long id){
-        return userService.saveUserR(user.getNom(),user.getPrenom(),user.getDateNaiss(),user.getLogin(),user.getPassword(),user.getRepassword(),id);
+        return userService.saveUserR(user.getNom(),user.getPrenom(),user.getAge(),user.getTel(), user.getUsername(),user.getPassword(),user.getRepassword(),id);
     }
 
 }
@@ -57,10 +58,12 @@ public class UserController {
 class UserForm{
     private String nom;
     private String prenom;
-    private String dateNaiss;
-    private String login;
+    private double age;
+    private String tel;
+    private String username;
     private String password;
     private String repassword;
+
 
     public String getNom() {
         return nom;
@@ -78,20 +81,20 @@ class UserForm{
         this.prenom = prenom;
     }
 
-    public String getDateNaiss() {
-        return dateNaiss;
+    public double getAge() {
+        return age;
     }
 
-    public void setDateNaiss(String dateNaiss) {
-        this.dateNaiss = dateNaiss;
+    public void setAge(double age) {
+        this.age = age;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -109,4 +112,13 @@ class UserForm{
     public void setRepassword(String repassword) {
         this.repassword = repassword;
     }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
 }
+

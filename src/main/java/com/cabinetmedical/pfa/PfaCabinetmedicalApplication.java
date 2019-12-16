@@ -21,26 +21,29 @@ public class PfaCabinetmedicalApplication {
         return new BCryptPasswordEncoder();
     }
 
-
+/*
 	@Bean
     CommandLineRunner start(UserService userService){
 
 
 		return args->{
-			userService.save( new Role(1,"ADMIN"));
-			userService.save( new Role(2,"SECRETAIRE"));
+
+		    //userService.save( new Role(1,"ADMIN"));
+			//userService.save( new Role(2,"SECRETAIRE"));
 
 
-			userService.saveUser("ALALOU" ,"Yassine","17/08/1999", "user1", "1234", "1234");
-			userService.addRoleToUser("user1","USER");
 
-			userService.saveUser("ADMIN" ,"Admin","10/10/1990", "admin", "admin", "admin");
+			userService.saveUser("admin" ,"admin",99, "admin", "1234", "1234" , "090909090");
+
+			userService.addRoleToUser("admin","ADMIN");
+
+			userService.saveUser("ADMIN" ,"Admin",22, "0676767676", "admin", "admin", "admin");
 			userService.addRoleToUser("admin","ADMIN");
 
 
 		};
 	}
 
-
+*/
 
 }

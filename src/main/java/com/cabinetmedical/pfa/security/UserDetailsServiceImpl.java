@@ -21,13 +21,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private UserService userService;
 
     @Override
-    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        com.cabinetmedical.pfa.classe.User user = userService.loadUserByUsername(login);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        com.cabinetmedical.pfa.classe.User user = userService.loadUserByUsername(username);
         if( user == null )throw new UsernameNotFoundException("User not found");
         Collection<GrantedAuthority> authorities = new ArrayList<>();
-        ((com.cabinetmedical.pfa.classe.User) user).getRoles().forEach(r->{
+        user.getRoles().forEach( r->{
             authorities.add(new SimpleGrantedAuthority(r.getLibelle()));
         });
-        return new User(user.getLogin(),user.getPassword(),authorities);
+        return new User(user.getUsername(),user.getPassword(),authorities);
     }
 }

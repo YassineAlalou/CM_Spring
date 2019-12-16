@@ -1,10 +1,9 @@
 package com.cabinetmedical.pfa.classe;
 
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.Entity;
@@ -15,7 +14,6 @@ import javax.persistence.Id;
 @Entity
 @Data
 @ToString
-
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,18 +21,14 @@ public class Role {
 
     private String libelle;
 
-
+    public Role(int i, String libelle) {
+        this.id = i ;
+        this.libelle = libelle ;
+    }
 
     public Role() {
 
     }
-
-    public Role(int i, String libelle) {
-        this.id = i ;
-        this.libelle = libelle;
-
-    }
-
 
     public int getId() {
         return id;

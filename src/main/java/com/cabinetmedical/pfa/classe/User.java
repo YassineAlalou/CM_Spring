@@ -9,6 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -23,10 +24,12 @@ public class User {
     private String nom;
     private String prenom;
     private String password;
-    private String dateNaiss;
+    private double age;
+    private String tel;
 
     @Column(unique=true)
-    private String login;
+    private String username;
+
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles = new ArrayList<>();
@@ -39,16 +42,16 @@ public class User {
         this.id = id;
     }
 
-    public String getNom(String nom) {
-        return this.nom;
+    public String getNom() {
+        return nom;
     }
 
     public void setNom(String nom) {
         this.nom = nom;
     }
 
-    public String getPrenom(String prenom) {
-        return this.prenom;
+    public String getPrenom() {
+        return prenom;
     }
 
     public void setPrenom(String prenom) {
@@ -63,20 +66,28 @@ public class User {
         this.password = password;
     }
 
-    public String getDateNaiss() {
-        return dateNaiss;
+    public double getAge() {
+        return age;
     }
 
-    public void setDateNaiss(String dateNaiss) {
-        this.dateNaiss = dateNaiss;
+    public void setAge(double age) {
+        this.age = age;
     }
 
-    public String getLogin() {
-        return login;
+    public String getTel() {
+        return tel;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public Collection<Role> getRoles() {

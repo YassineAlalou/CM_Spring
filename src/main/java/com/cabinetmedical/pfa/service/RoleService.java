@@ -42,7 +42,7 @@ public class RoleService {
     public Role updateRole(Role role, int id){
         Role roleEx = roleRepository.getOne(id);
         roleEx.setLibelle(role.getLibelle());
-       roleRepository.save(roleEx);
+        roleRepository.save(roleEx);
         return roleEx;
     }
 

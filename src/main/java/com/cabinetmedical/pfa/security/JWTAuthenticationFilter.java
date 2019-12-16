@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private AuthenticationManager authenticationManager;
@@ -37,8 +38,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
 
         try {
-            com.cabinetmedical.pfa.classe.User user = new ObjectMapper().readValue(request.getInputStream(), com.cabinetmedical.pfa.classe.User.class);
-            return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getLogin(), user.getPassword()));
+           com.cabinetmedical.pfa.classe.User appUser = new ObjectMapper().readValue(request.getInputStream(), com.cabinetmedical.pfa.classe.User.class);
+            return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(appUser.getUsername(), appUser.getPassword()));
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException("Erreur dans JWTAUTHENTICATION FILTER");
@@ -48,12 +49,13 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        User user = (User) authResult.getPrincipal();
+        org.springframework.security.core.userdetails.User user = (User) authResult.getPrincipal();
 
         List<String> roles = new ArrayList<>();
         authResult.getAuthorities().forEach( a ->{
             roles.add(a.getAuthority());
         });
+
 
 
 

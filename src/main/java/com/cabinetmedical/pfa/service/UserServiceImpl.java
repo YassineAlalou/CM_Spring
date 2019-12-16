@@ -10,7 +10,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -29,20 +28,21 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User saveUser(String n, String p, String dateNaiss, String login, String password, String confirmedPassword) {
-        User user = userRepository.findByLogin(login);
+    public User saveUser(String n, String p, double age, String username, String password, String confirmedPassword, String t) {
+        User user = userRepository.findByUsername(username);
         if( user != null)
             throw new RuntimeException("User Already Exists");
         // if ( !password.equals(confirmedPassword))
-            // throw new RuntimeException(("les mots de passes ne correspondent pas !"));
+        // throw new RuntimeException(("les mots de passes ne correspondent pas !"));
         User User = new User();
-        User.setLogin(login);
+        User.setUsername(username);
         User.setPassword(bCryptPasswordEncoder.encode(password));
-        User.setDateNaiss(dateNaiss);
+        User.setAge(age);
         User.setNom(n);
         User.setPrenom(p);
+        User.setTel(t);
         userRepository.save(User);
-        addRoleToUser(login,"USER");
+        addRoleToUser(username,"USER");
         return User;
     }
 
@@ -53,14 +53,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User loadUserByUsername(String login) {
-        return userRepository.findByLogin(login);
+        return userRepository.findByUsername(login);
     }
 
     @Override
     public void addRoleToUser(String login, String rolename) {
-        User user = userRepository.findByLogin(login);
+        User user = userRepository.findByUsername(login);
         Role role = roleRepository.findByLibelle(rolename);
-        // user.getRoles().add(role);
+        user.getRoles().add(role);
 
     }
 
@@ -77,7 +77,7 @@ public class UserServiceImpl implements UserService {
 
     public User updateUser(User user, long id) {
         User userEx = userRepository.getOne(id);
-        userEx.setLogin(user.getLogin());
+        userEx.setUsername(user.getUsername());
         if( user.getPassword() != "")
         {
             userEx.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
@@ -95,19 +95,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User saveUserR(String nom, String prenom, String dateNaiss, String login, String password, String confirmedPassword, long id) {
+    public User saveUserR(String nom, String prenom, double age, String t, String login, String password, String confirmedPassword, long id) {
 
-        User user1 = userRepository.findByLogin(login);
+        User user1 = userRepository.findByUsername(login);
         if( user1 != null)
             throw new RuntimeException("User Already Exists");
         if ( ! password.equals(confirmedPassword))
             throw new RuntimeException(("les mots de passes ne correspondent pas !"));
         User user = new User();
-        user.setLogin(login);
+        user.setUsername(login);
         user.setPassword(bCryptPasswordEncoder.encode(password));
-        user.setDateNaiss(dateNaiss);
+        user.setAge(age);
         user.setNom(nom);
         user.setPrenom(prenom);
+        user.setTel(t);
         userRepository.save(user);
         addRoleToUser(login,"USER");
         return user;
