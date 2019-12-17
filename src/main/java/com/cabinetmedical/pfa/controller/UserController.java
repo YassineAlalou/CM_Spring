@@ -23,7 +23,7 @@ public class UserController {
 
     @PostMapping("/register")
     public User register(@RequestBody UserForm user){
-        return userService.saveUser(user.getNom(),user.getPrenom(),user.getAge(),user.getTel(),user.getUsername(),user.getPassword(),user.getRepassword());
+        return userService.saveUser(user.getNom(),user.getPrenom(),user.getAge(),user.getUsername(),user.getTel(),user.getUsername(),user.getRepassword());
     }
     @GetMapping("/all")
     public List<User> getAll(){

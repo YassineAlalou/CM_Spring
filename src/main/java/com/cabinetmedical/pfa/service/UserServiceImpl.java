@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User saveUser(String n, String p, double age, String username, String password, String confirmedPassword, String t) {
+    public User saveUser(String nom, String prenom, double age,  String password, String tel, String username, String confirmedPassword) {
         User user = userRepository.findByUsername(username);
         if( user != null)
             throw new RuntimeException("User Already Exists");
@@ -38,11 +38,12 @@ public class UserServiceImpl implements UserService {
         User.setUsername(username);
         User.setPassword(bCryptPasswordEncoder.encode(password));
         User.setAge(age);
-        User.setNom(n);
-        User.setPrenom(p);
-        User.setTel(t);
+        User.setNom(nom);
+        User.setPrenom(prenom);
+        User.setTel(tel);
         userRepository.save(User);
-        addRoleToUser(username,"USER");
+        addRoleToUser(username,"SECRETAIRE");
+        System.out.println(User);
         return User;
     }
 
