@@ -32,19 +32,20 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByUsername(username);
         if( user != null)
             throw new RuntimeException("User Already Exists");
-        // if ( !password.equals(confirmedPassword))
-        // throw new RuntimeException(("les mots de passes ne correspondent pas !"));
-        User User = new User();
-        User.setUsername(username);
-        User.setPassword(bCryptPasswordEncoder.encode(password));
-        User.setAge(age);
-        User.setNom(nom);
-        User.setPrenom(prenom);
-        User.setTel(tel);
-        userRepository.save(User);
-        addRoleToUser(username,"SECRETAIRE");
-        System.out.println(User);
-        return User;
+        //if ( !password.equals(confirmedPassword))
+          //  throw new RuntimeException(("les mots de passes ne correspondent pas !"));
+        User User1 = new User();
+        User1.setUsername(username);
+        User1.setPassword(bCryptPasswordEncoder.encode(password));
+        User1.setAge(age);
+        User1.setNom(nom);
+        User1.setActived(true);
+        User1.setPrenom(prenom);
+        User1.setTel(tel);
+        userRepository.save(User1);
+        addRoleToUser(username,"PATIENT");
+        System.out.println(User1);
+        return User1;
     }
 
     @Override
@@ -96,22 +97,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User saveUserR(String nom, String prenom, double age, String t, String login, String password, String confirmedPassword, long id) {
+    public User saveUserR(String nom, String prenom, double age,  String password, String tel, String username, String confirmedPassword) {
 
-        User user1 = userRepository.findByUsername(login);
+        User user1 = userRepository.findByUsername(username);
         if( user1 != null)
             throw new RuntimeException("User Already Exists");
         if ( ! password.equals(confirmedPassword))
             throw new RuntimeException(("les mots de passes ne correspondent pas !"));
         User user = new User();
-        user.setUsername(login);
+        user.setUsername(username);
         user.setPassword(bCryptPasswordEncoder.encode(password));
         user.setAge(age);
         user.setNom(nom);
+        user.setActived(false);
         user.setPrenom(prenom);
-        user.setTel(t);
+        user.setTel(tel);
         userRepository.save(user);
-        addRoleToUser(login,"USER");
+        addRoleToUser(username,"PATIENT");
         return user;
     }
 

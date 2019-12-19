@@ -28,22 +28,26 @@ public class PfaCabinetmedicalApplication {
 
 		return args->{
 
-		    //userService.save( new Role(1,"ADMIN"));
-			//userService.save( new Role(2,"SECRETAIRE"));
+		    userService.save( new Role(1,"ADMIN"));
+			userService.save( new Role(2,"SECRETAIRE"));
+			userService.save( new Role(3,"PATIENT"));
 
 
 
-			userService.saveUser("admin" ,"admin",99, "admin", "1234", "1234" , "090909090");
+			userService.saveUser("Alalou" ,"yassine",23, "1234", "0677844627", "Admin" , "1234");
+			userService.addRoleToUser("Admin","ADMIN");
 
-			userService.addRoleToUser("admin","ADMIN");
+            userService.saveUser("nomsec" ,"prenomsec",25, "1234", "0677844699", "User1" , "1234");
+            userService.addRoleToUser("User1","SECRETAIRE");
 
-			userService.saveUser("ADMIN" ,"Admin",22, "0676767676", "admin", "admin", "admin");
-			userService.addRoleToUser("admin","ADMIN");
+            userService.saveUser("Pat" ,"PatPrenom",12, "1234", "0677845555", "Patient1" , "1234");
+            userService.addRoleToUser("Patient1","PATIENT");
+
+
 
 
 		};
 	}
-
 */
 
 }
