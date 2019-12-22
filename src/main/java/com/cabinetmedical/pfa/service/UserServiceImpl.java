@@ -39,7 +39,6 @@ public class UserServiceImpl implements UserService {
         User1.setPassword(bCryptPasswordEncoder.encode(password));
         User1.setAge(age);
         User1.setNom(nom);
-        // User1.setActived(true);
         User1.setPrenom(prenom);
         User1.setTel(tel);
         userRepository.save(User1);
