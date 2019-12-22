@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
         User1.setPassword(bCryptPasswordEncoder.encode(password));
         User1.setAge(age);
         User1.setNom(nom);
-        User1.setActived(true);
+        // User1.setActived(true);
         User1.setPrenom(prenom);
         User1.setTel(tel);
         userRepository.save(User1);
@@ -63,7 +63,6 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByUsername(login);
         Role role = roleRepository.findByLibelle(rolename);
         user.getRoles().add(role);
-
     }
 
     @Override
@@ -109,13 +108,31 @@ public class UserServiceImpl implements UserService {
         user.setPassword(bCryptPasswordEncoder.encode(password));
         user.setAge(age);
         user.setNom(nom);
-        user.setActived(false);
         user.setPrenom(prenom);
         user.setTel(tel);
         userRepository.save(user);
-        addRoleToUser(username,"PATIENT");
+        // addRoleToUser(username,"PATIENT");
         return user;
     }
 
+    @Override
+    public User saveUserS(String nom, String prenom, double age,  String password, String tel, String username, String confirmedPassword) {
+
+        User user1 = userRepository.findByUsername(username);
+        if( user1 != null)
+            throw new RuntimeException("User Already Exists");
+        if ( ! password.equals(confirmedPassword))
+            throw new RuntimeException(("les mots de passes ne correspondent pas !"));
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(bCryptPasswordEncoder.encode(password));
+        user.setAge(age);
+        user.setNom(nom);
+        user.setPrenom(prenom);
+        user.setTel(tel);
+        userRepository.save(user);
+        addRoleToUser(username,"SECRETAIRE");
+        return user;
+    }
 
 }

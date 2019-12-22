@@ -46,10 +46,11 @@ public class UserController {
         return userServiceimpl.updateUser(user,id);
     }
 
-    @PostMapping("/registeruser/{id}")
-    public User registerUser(@RequestBody UserForm user, @PathVariable long id){
-        return userService.saveUserR(user.getNom(),user.getPrenom(),user.getAge(),user.getPassword(),user.getTel(),user.getUsername(),user.getRepassword());
+    @PostMapping("/registerS")
+    public User registerUser(@RequestBody UserForm user){
+        return userService.saveUserS(user.getNom(),user.getPrenom(),user.getAge(),user.getPassword(),user.getTel(),user.getUsername(),user.getRepassword());
     }
+
 
 }
 

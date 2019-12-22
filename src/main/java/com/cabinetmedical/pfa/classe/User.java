@@ -26,7 +26,6 @@ public class User {
     private String password;
     private double age;
     private String tel;
-    private boolean actived;
 
     @Column(unique=true)
     private String username;
@@ -87,13 +86,6 @@ public class User {
         return username;
     }
 
-    public boolean isActived() {
-        return actived;
-    }
-
-    public void setActived(boolean actived) {
-        this.actived = actived;
-    }
 
     public void setUsername(String username) {
         this.username = username;

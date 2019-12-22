@@ -15,6 +15,7 @@ public interface UserService {
 
 
     List<User> getAll();
+    User saveUserS(String nom, String prenom, double age,  String password, String tel, String username, String confirmedPassword);
 
     User saveUserR(String nom, String prenom, double age,  String password, String tel, String username, String confirmedPassword);
 }
