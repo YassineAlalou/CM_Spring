@@ -70,6 +70,13 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
+    public void activerUser(String username) {
+
+        User u = userRepository.findByUsername(username);
+        addRoleToUser(u.getUsername(), "PATIENT");
+
+    }
+
     public void deleteUser(long id) {
 
         userRepository.deleteById(id);

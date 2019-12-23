@@ -46,6 +46,12 @@ public class UserController {
         return userServiceimpl.updateUser(user,id);
     }
 
+    @PutMapping("/activer/{username}")
+    public void Activer(@RequestBody String username)
+    {
+        userServiceimpl.activerUser(username);
+    }
+
     @PostMapping("/registerS")
     public User registerUser(@RequestBody UserForm user){
         return userService.saveUserS(user.getNom(),user.getPrenom(),user.getAge(),user.getPassword(),user.getTel(),user.getUsername(),user.getRepassword());

@@ -8,6 +8,8 @@ import java.io.Serializable;
 
 @RepositoryRestResource
 
+
+
 public interface UserRepository extends JpaRepository<User,Long>, Serializable {
         public User findByUsername(String username);
 }
