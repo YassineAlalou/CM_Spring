@@ -47,7 +47,7 @@ public class UserController {
     }
 
     @PutMapping("/activer/{username}")
-    public void Activer(@RequestBody String username)
+    public void Activer(@PathVariable String username)
     {
         userServiceimpl.activerUser(username);
     }
@@ -56,8 +56,6 @@ public class UserController {
     public User registerUser(@RequestBody UserForm user){
         return userService.saveUserS(user.getNom(),user.getPrenom(),user.getAge(),user.getPassword(),user.getTel(),user.getUsername(),user.getRepassword());
     }
-
-
 
 
 }
