@@ -26,6 +26,7 @@ public class ConsultationController {
         return this.consultationService.saveConsultation(ct);
     }
 
+
     @DeleteMapping("{id}")
     public void deleteConsultation(@PathVariable int id){
         this.consultationService.deleteConsultation(id);

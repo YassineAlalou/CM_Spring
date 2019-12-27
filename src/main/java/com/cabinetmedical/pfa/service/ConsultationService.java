@@ -24,14 +24,7 @@ public class ConsultationService {
     }
 
     public Consultation saveConsultation(Consultation c){
-        Consultation ct = new Consultation();
-
-        ct.setDateC(c.getDateC());
-        ct.setDiagnostic(c.getDiagnostic());
-        ct.setMotif(c.getMotif());
-        ct.setPrice(c.getPrice());
-
-        return ct;
+        return consultationRepository.save(c);
     }
 
     public void deleteConsultation(int id){

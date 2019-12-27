@@ -70,6 +70,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
+
     public void activerUser(String username) {
 
         User u = userRepository.findByUsername(username);

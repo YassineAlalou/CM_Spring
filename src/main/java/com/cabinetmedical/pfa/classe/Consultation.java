@@ -77,5 +77,11 @@ public class Consultation {
         this.price = price;
     }
 
+    public TypeConsultation getTypeConsultation() {
+        return typeConsultation;
+    }
 
+    public void setTypeConsultation(TypeConsultation typeConsultation) {
+        this.typeConsultation = typeConsultation;
+    }
 }
