@@ -24,7 +24,8 @@ public class ConsultationService {
     }
 
     public Consultation saveConsultation(Consultation c){
-        return consultationRepository.save(c);
+
+        return this.consultationRepository.save(c);
     }
 
     public void deleteConsultation(int id){
@@ -37,6 +38,7 @@ public class ConsultationService {
         ct.setMotif(c.getMotif());
         ct.setDiagnostic(c.getDiagnostic());
         ct.setDateC(c.getDateC());
+        ct.setTypeConsultation(c.getTypeConsultation());
         this.consultationRepository.save(ct);
         return ct;
     }

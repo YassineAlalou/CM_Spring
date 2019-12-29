@@ -24,9 +24,6 @@ public class TypeConsultation {
     public TypeConsultation() {
     }
 
-    public TypeConsultation(String libelle) {
-        this.libelle = libelle;
-    }
 
     public int getId() {
         return id;

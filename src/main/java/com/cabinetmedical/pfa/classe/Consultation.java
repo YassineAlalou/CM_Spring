@@ -16,26 +16,18 @@ public class Consultation {
     @Temporal(TemporalType.DATE)
     private Date dateC;
     private String motif;
-    private String Diagnostic;
+    private String diagnostic;
     private long price;
 
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private TypeConsultation typeConsultation;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     private TypeConsultation typeConsultation;
 
 
     public Consultation() {
     }
 
-    public Consultation(Date dateC, String motif, String diagnostic, long price, TypeConsultation typeConsultation) {
-        this.dateC = dateC;
-        this.motif = motif;
-        Diagnostic = diagnostic;
-        this.price = price;
-        this.typeConsultation = typeConsultation;
-    }
 
     public int getId() {
         return id;
@@ -50,7 +42,7 @@ public class Consultation {
     }
 
     public String getDiagnostic() {
-        return Diagnostic;
+        return diagnostic;
     }
 
     public long getPrice() {
@@ -70,7 +62,7 @@ public class Consultation {
     }
 
     public void setDiagnostic(String diagnostic) {
-        Diagnostic = diagnostic;
+        this.diagnostic = diagnostic;
     }
 
     public void setPrice(long price) {
