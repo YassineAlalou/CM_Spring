@@ -18,8 +18,6 @@ public class RendezvousController {
     @Autowired
     private RendezvousService rendezvousService;
     @Autowired
-    private UserServiceImpl userServiceimpl;
-    @Autowired
     private UserRepository userRepository;
 
     @GetMapping("/all")
