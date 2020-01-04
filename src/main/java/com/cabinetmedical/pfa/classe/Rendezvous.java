@@ -20,10 +20,11 @@ public class Rendezvous {
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
+
     public Rendezvous() {
     }
 
-    public Rendezvous(String dater, String motif, User user) {
+    public Rendezvous(String dater, String motif, User user, Consultation consultation) {
         this.dater = dater;
         this.motif = motif;
         this.user = user;
@@ -60,4 +61,5 @@ public class Rendezvous {
     public void setUser(User user) {
         this.user = user;
     }
+
 }

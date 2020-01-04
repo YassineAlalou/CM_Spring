@@ -1,11 +1,11 @@
 package com.cabinetmedical.pfa.controller;
 
 
+import com.cabinetmedical.pfa.classe.Medicament;
 import com.cabinetmedical.pfa.classe.Rendezvous;
 import com.cabinetmedical.pfa.classe.User;
 import com.cabinetmedical.pfa.dao.UserRepository;
 import com.cabinetmedical.pfa.service.RendezvousService;
-import com.cabinetmedical.pfa.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +25,10 @@ public class RendezvousController {
         return this.rendezvousService.getAll();
     }
 
+    @GetMapping("{id}")
+    public Rendezvous getRdv(@PathVariable int id){
+        return this.rendezvousService.findById(id);
+    }
 
     @PostMapping("/{username}")
     public Rendezvous saveRegion(@RequestBody Rendezvous rdv, @PathVariable String  username){
@@ -32,7 +36,6 @@ public class RendezvousController {
         rdv.setUser(user);
         System.out.println(rdv.getUser());
         return rendezvousService.saveRendezvous(rdv);
-
     }
 
     @DeleteMapping("{id}")

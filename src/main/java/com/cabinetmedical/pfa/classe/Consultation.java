@@ -19,8 +19,6 @@ public class Consultation {
     private String diagnostic;
     private long price;
 
-
-
     @ManyToOne(fetch = FetchType.LAZY)
     private TypeConsultation typeConsultation;
 
