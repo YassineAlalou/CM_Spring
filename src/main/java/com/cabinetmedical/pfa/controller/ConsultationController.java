@@ -34,7 +34,6 @@ public class ConsultationController {
     public Consultation saveConsultation(@RequestBody Consultation ct, @PathVariable int id){
         TypeConsultation tp = typeConsultationService.findById(id);
         ct.setTypeConsultation(tp);
-
         return consultationService.saveConsultation(ct);
     }
 

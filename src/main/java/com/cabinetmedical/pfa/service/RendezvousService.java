@@ -22,6 +22,8 @@ public class RendezvousService {
         return this.rendezvousRepository.findById(id).get();
     }
 
+    public List<Rendezvous> findByDater(String dater) {return this.rendezvousRepository.findByDater(dater);}
+
     public Rendezvous saveRendezvous(Rendezvous r){
         return rendezvousRepository.save(r);
     }
@@ -36,7 +38,10 @@ public class RendezvousService {
         Rendezvous ct = rendezvousRepository.getOne(id);
         ct.setDater(c.getDater());
         ct.setMotif(c.getMotif());
+        ct.setDiagnostic(c.getDiagnostic());
+        ct.setPrice(c.getPrice());
         ct.setUser(c.getUser());
+        ct.setTypeConsultation(c.getTypeConsultation());
 
         this.rendezvousRepository.save(ct);
         return ct;

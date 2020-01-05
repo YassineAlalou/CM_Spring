@@ -17,17 +17,26 @@ public class Rendezvous {
     private String dater;
     private String motif;
 
+    private String diagnostic;
+    private long price;
+
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private TypeConsultation typeConsultation;
 
 
     public Rendezvous() {
     }
 
-    public Rendezvous(String dater, String motif, User user, Consultation consultation) {
+    public Rendezvous(String dater, String motif, String diagnostic, long price, User user, TypeConsultation typeConsultation) {
         this.dater = dater;
         this.motif = motif;
+        this.diagnostic = diagnostic;
+        this.price = price;
         this.user = user;
+        this.typeConsultation = typeConsultation;
     }
 
     public int getId() {
@@ -62,4 +71,28 @@ public class Rendezvous {
         this.user = user;
     }
 
+    public String getDiagnostic() {
+        return diagnostic;
+    }
+
+    public void setDiagnostic(String diagnostic) {
+        this.diagnostic = diagnostic;
+    }
+
+    public long getPrice() {
+        return price;
+    }
+
+    public void setPrice(long price) {
+        this.price = price;
+    }
+
+
+    public TypeConsultation getTypeConsultation() {
+        return typeConsultation;
+    }
+
+    public void setTypeConsultation(TypeConsultation typeConsultation) {
+        this.typeConsultation = typeConsultation;
+    }
 }

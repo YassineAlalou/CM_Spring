@@ -1,7 +1,5 @@
 package com.cabinetmedical.pfa.controller;
 
-
-import com.cabinetmedical.pfa.classe.Medicament;
 import com.cabinetmedical.pfa.classe.Rendezvous;
 import com.cabinetmedical.pfa.classe.User;
 import com.cabinetmedical.pfa.dao.UserRepository;
@@ -25,13 +23,18 @@ public class RendezvousController {
         return this.rendezvousService.getAll();
     }
 
+    @GetMapping("/dat/{dater}")
+    public List<Rendezvous> getRdvbyDater(@PathVariable String dater){
+        return this.rendezvousService.findByDater(dater);
+    }
+
     @GetMapping("{id}")
     public Rendezvous getRdv(@PathVariable int id){
         return this.rendezvousService.findById(id);
     }
 
     @PostMapping("/{username}")
-    public Rendezvous saveRegion(@RequestBody Rendezvous rdv, @PathVariable String  username){
+    public Rendezvous saveRendezvous(@RequestBody Rendezvous rdv, @PathVariable String  username){
         User user = userRepository.findByUsername(username);
         rdv.setUser(user);
         System.out.println(rdv.getUser());
