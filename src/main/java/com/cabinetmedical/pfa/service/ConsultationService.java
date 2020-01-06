@@ -29,6 +29,7 @@ public class ConsultationService {
     }
 
     public void deleteConsultation(int id){
+        System.out.println("-----------------HIROORBOOORO-----------------");
         this.consultationRepository.deleteById(id);
     }
 

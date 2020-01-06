@@ -32,6 +32,7 @@ public class ConsultationController {
     }
     @PostMapping("/save/{id}")
     public Consultation saveConsultation(@RequestBody Consultation ct, @PathVariable int id){
+        System.out.println("-------------------------------------HOROBOO--------------------------------------------------");
         TypeConsultation tp = typeConsultationService.findById(id);
         ct.setTypeConsultation(tp);
         return consultationService.saveConsultation(ct);
@@ -40,6 +41,7 @@ public class ConsultationController {
 
     @DeleteMapping("{id}")
     public void deleteConsultation(@PathVariable int id){
+        System.out.println("-------------------------------------HOROBOO--------------------------------------------------");
         consultationService.deleteConsultation(id);
     }
 
