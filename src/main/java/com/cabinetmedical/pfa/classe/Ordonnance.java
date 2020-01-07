@@ -13,12 +13,9 @@ public class Ordonnance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Temporal(TemporalType.DATE)
-    private Date dateOr;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Consultation consultation;
-
+    private Rendezvous rendezvous;
 
 
     public Ordonnance() {
@@ -32,11 +29,11 @@ public class Ordonnance {
         this.id = id;
     }
 
-    public Date getDateOr() {
-        return dateOr;
+    public Rendezvous getRendezvous() {
+        return rendezvous;
     }
 
-    public void setDateOr(Date dateOr) {
-        this.dateOr = dateOr;
+    public void setRendezvous(Rendezvous rendezvous) {
+        this.rendezvous = rendezvous;
     }
 }

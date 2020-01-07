@@ -2,6 +2,7 @@ package com.cabinetmedical.pfa.service;
 
 import com.cabinetmedical.pfa.classe.Consultation;
 import com.cabinetmedical.pfa.classe.Ordonnance;
+import com.cabinetmedical.pfa.classe.Rendezvous;
 import com.cabinetmedical.pfa.dao.OrdonnanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ public class OrdonnanceService {
     @Autowired
     private OrdonnanceRepository ordonnanceRepository;
     @Autowired
-    private ConsultationService consultationService;
+    private RendezvousService rendezvousService;
 
     public List<Ordonnance> getAll(){
         return ordonnanceRepository.findAll();
@@ -26,8 +27,8 @@ public class OrdonnanceService {
     }
 
     public Ordonnance save(Ordonnance or, int id){
-        Consultation ct = consultationService.findById(id);
-        or.setConsultation(ct);
+        Rendezvous ct = rendezvousService.findById(id);
+        or.setRendezvous(ct);
         return ordonnanceRepository.save(or);
     }
 
@@ -37,8 +38,7 @@ public class OrdonnanceService {
 
     public Ordonnance update(Ordonnance or, int id){
         Ordonnance ox = ordonnanceRepository.getOne(id);
-        ox.setDateOr(or.getDateOr());
-        ox.setConsultation(or.getConsultation());
+        ox.setRendezvous(or.getRendezvous());
         ordonnanceRepository.save(ox);
         return ox;
     }

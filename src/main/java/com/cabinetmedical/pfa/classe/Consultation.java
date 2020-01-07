@@ -26,7 +26,7 @@ public class Consultation {
 
 
     @JsonIgnore
-    @OneToMany(mappedBy = "consultation", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "rendezvous", cascade = CascadeType.ALL)
     private Set<Ordonnance> ordonnances;
 
     public Consultation() {

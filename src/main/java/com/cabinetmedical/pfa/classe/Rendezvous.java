@@ -1,9 +1,11 @@
 package com.cabinetmedical.pfa.classe;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 
 @Entity
@@ -25,6 +27,10 @@ public class Rendezvous {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private TypeConsultation typeConsultation;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "rendezvous", cascade = CascadeType.ALL)
+    private Set<Ordonnance> ordonnances;
 
 
     public Rendezvous() {
